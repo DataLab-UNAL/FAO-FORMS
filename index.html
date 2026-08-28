@@ -3,25 +3,326 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Validación ganadería de leche Doble propósito</title>
+    <title>Validación técnica - Modelos de ganadería de leche en Colombia</title>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
+        :root {
+            --bg: #f3f6f7;
+            --surface: #ffffff;
+            --surface-soft: #f8faf9;
+            --border: #dfe5e8;
+            --text: #071322;
+            --muted: #475569;
+            --green: #2f8438;
+            --green-dark: #246b2d;
+            --green-soft: #eaf6ed;
+            --green-border: #c9e6ce;
+            --shadow: 0 18px 42px rgba(15, 23, 42, 0.08);
         }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 12% 10%, rgba(47, 132, 56, 0.08), transparent 24rem),
+                linear-gradient(180deg, #f7f9fa 0%, var(--bg) 100%);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.55;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .page {
+            width: min(1120px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 18px 0 44px;
+        }
+
+        .topbar {
+            margin-bottom: 22px;
+        }
+
+        .eyebrow {
+            margin: 0 0 4px;
+            color: #0f7a2a;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            max-width: 780px;
+            margin: 0;
+            font-size: clamp(30px, 4vw, 52px);
+            line-height: 1.08;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+
+        .welcome {
+            padding: 36px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+        }
+
+        .check-icon {
+            display: grid;
+            width: 46px;
+            height: 46px;
+            margin-bottom: 18px;
+            place-items: center;
+            border-radius: 10px;
+            background: var(--green-soft);
+            color: var(--green);
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        h2 {
+            margin: 0 0 10px;
+            font-size: 26px;
+            line-height: 1.2;
+        }
+
+        .lead {
+            max-width: 850px;
+            margin: 0;
+            color: #172033;
+            font-size: 17px;
+        }
+
+        .note {
+            margin: 26px 0 30px;
+            padding: 16px 18px;
+            border-left: 3px solid #c7cfd6;
+            background: var(--surface-soft);
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin: 0 0 16px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-title h3 {
+            margin: 0;
+            font-size: 19px;
+        }
+
+        .section-title p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .form-card {
+            display: flex;
+            min-height: 172px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface-soft);
+            text-decoration: none;
+            transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+        }
+
+        .form-card[href]:hover,
+        .form-card[href]:focus-visible {
+            border-color: var(--green);
+            box-shadow: 0 14px 30px rgba(47, 132, 56, 0.12);
+            outline: none;
+            transform: translateY(-2px);
+        }
+
+        .form-card.disabled {
+            color: #607080;
+            cursor: not-allowed;
+        }
+
+        .card-content {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .card-kicker {
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .card-title {
+            margin: 0;
+            font-size: 21px;
+            line-height: 1.22;
+        }
+
+        .card-description {
+            flex: 1;
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .card-action {
+            display: inline-flex;
+            width: fit-content;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border: 1px solid var(--green);
+            border-radius: 7px;
+            background: var(--green);
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .disabled .card-action {
+            border-color: var(--green-border);
+            background: var(--green-soft);
+            color: var(--green-dark);
+        }
+
+        .arrow {
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        .help-box {
+            margin-top: 22px;
+            padding: 16px 18px;
+            border: 1px solid var(--green-border);
+            border-radius: 8px;
+            background: var(--green-soft);
+            color: #183d22;
+            font-size: 14px;
+        }
+
+        .help-box strong {
+            color: #0f2415;
+        }
+
+        @media (max-width: 760px) {
+            .page {
+                width: min(100% - 20px, 1120px);
+                padding-top: 12px;
+            }
+
+            .section-title {
+                display: block;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+
+            .welcome {
+                padding: 24px 18px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-card {
+                min-height: 0;
+            }
         }
     </style>
 </head>
 <body>
+    <main class="page">
+        <header class="topbar">
+            <p class="eyebrow">Validación técnica</p>
+            <h1>Modelos de ganadería de leche en Colombia</h1>
+        </header>
 
-    
-    <iframe src="https://script.google.com/macros/s/AKfycbwQ1Wt7vhnLRSfXrMduMtS0DT9nbssybm2KIG99colFi_P7IVEzKX9kRTUTWynlctOjpA/exec"></iframe>
+        <section class="welcome" aria-labelledby="welcome-title">
+            <div class="check-icon" aria-hidden="true">✓</div>
+            <h2 id="welcome-title">Bienvenid@</h2>
+            <p class="lead">
+                Gracias por participar en este proceso de validación técnica. Seleccione el modelo productivo
+                que corresponde a su experiencia para diligenciar el formulario asociado.
+            </p>
 
+            <p class="note">
+                La información suministrada será utilizada exclusivamente con fines técnicos y de investigación.
+            </p>
+
+            <div class="section-title">
+                <div>
+                    <h3>Seleccione un formulario</h3>
+                    <p>Los formularios se abrirán en la plataforma de validación correspondiente.</p>
+                </div>
+            </div>
+
+            <div class="form-grid">
+                <a class="form-card" href="doble-proposito-convencional.html">
+                    <span class="card-content">
+                        <span class="card-kicker">Modelo 1</span>
+                        <strong class="card-title">Ganadería de leche Doble propósito convencional</strong>
+                        <span class="card-description">Formulario para el sistema doble propósito y sus componentes técnicos.</span>
+                        <span class="card-action">Iniciar formulario <span class="arrow" aria-hidden="true">→</span></span>
+                    </span>
+                </a>
+
+                <a class="form-card" href="especializada-pequena.html">
+                    <span class="card-content">
+                        <span class="card-kicker">Modelo 2</span>
+                        <strong class="card-title">Ganadería de leche Especializada - Pequeña</strong>
+                        <span class="card-description">Formulario para validar variables de lechería especializada en unidades pequeñas.</span>
+                        <span class="card-action">Iniciar formulario <span class="arrow" aria-hidden="true">→</span></span>
+                    </span>
+                </a>
+
+                <article class="form-card disabled" aria-disabled="true">
+                    <span class="card-content">
+                        <span class="card-kicker">Modelo 3</span>
+                        <strong class="card-title">Ganadería de leche Doble propósito - Especializada</strong>
+                        <span class="card-description">Este formulario estará disponible cuando se confirme el enlace de acceso.</span>
+                        <span class="card-action">Próximamente</span>
+                    </span>
+                </article>
+
+                <article class="form-card disabled" aria-disabled="true">
+                    <span class="card-content">
+                        <span class="card-kicker">Modelo 4</span>
+                        <strong class="card-title">Ganadería de leche Especializada - Grande</strong>
+                        <span class="card-description">Este formulario estará disponible cuando se confirme el enlace de acceso.</span>
+                        <span class="card-action">Próximamente</span>
+                    </span>
+                </article>
+            </div>
+
+            <div class="help-box">
+                <strong>¿Ya comenzó anteriormente?</strong> Ingrese al mismo formulario con el correo electrónico usado la primera vez para recuperar su progreso, si la plataforma lo permite.
+            </div>
+        </section>
+    </main>
 </body>
 </html>
