@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Validación técnica - Modelos de ganadería de leche en Colombia</title>
+    <title>Validación técnica - Tipologías de producción de leche bovina en Colombia</title>
     <style>
         :root {
             --bg: #f3f6f7;
@@ -58,12 +58,48 @@
         }
 
         h1 {
-            max-width: 780px;
+            max-width: none;
             margin: 0;
-            font-size: clamp(30px, 4vw, 52px);
-            line-height: 1.08;
+            font-size: clamp(26px, 3vw, 36px);
+            line-height: 1.15;
             letter-spacing: 0;
-            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .partner-logos {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 12px 24px;
+            margin-top: 14px;
+        }
+
+        .partner-logos img {
+            display: block;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .logo-fepale {
+            width: 150px;
+            height: 71px;
+        }
+
+        .logo-lab {
+            width: 145px;
+            height: 55px;
+        }
+
+        .logo-datalab {
+            width: 180px;
+            height: 75px;
+        }
+
+        .logo-fao {
+            width: 142px;
+            height: 48px;
         }
 
         .welcome {
@@ -74,17 +110,13 @@
             box-shadow: var(--shadow);
         }
 
-        .check-icon {
-            display: grid;
-            width: 46px;
-            height: 46px;
-            margin-bottom: 18px;
-            place-items: center;
-            border-radius: 10px;
-            background: var(--green-soft);
-            color: var(--green);
-            font-size: 30px;
-            font-weight: 700;
+        .project-subtitle {
+            margin: 0 0 18px;
+            color: var(--muted);
+            font-size: clamp(12px, 1.7vw, 16px);
+            font-weight: 600;
+            line-height: 1.4;
+            white-space: nowrap;
         }
 
         h2 {
@@ -227,8 +259,23 @@
             }
 
             h1 {
-                font-size: 30px;
+                font-size: clamp(18px, 5vw, 30px);
+                white-space: normal;
             }
+
+            .project-subtitle {
+                white-space: normal;
+            }
+
+            .partner-logos {
+                justify-content: flex-start;
+                gap: 12px 18px;
+            }
+
+            .logo-fepale { width: 128px; }
+            .logo-lab { width: 118px; }
+            .logo-datalab { width: 150px; }
+            .logo-fao { width: 124px; }
 
             .welcome {
                 padding: 24px 18px;
@@ -248,11 +295,18 @@
     <main class="page">
         <header class="topbar">
             <p class="eyebrow">Validación técnica</p>
-            <h1>Modelos de ganadería de leche en Colombia</h1>
+            <h1>Tipologías de producción de leche bovina en Colombia</h1>
         </header>
 
         <section class="welcome" aria-labelledby="welcome-title">
-            <div class="check-icon" aria-hidden="true">✓</div>
+            <div class="partner-logos" aria-label="Instituciones participantes">
+                <img class="logo-fepale" src="assets/logos/fepale.png" alt="FEPALE, Federación Panamericana de Lechería">
+                <img class="logo-lab" src="assets/logos/laboratorio-analitica.png" alt="Laboratorio de Analítica de Datos, Sede Bogotá">
+                <img class="logo-datalab" src="assets/logos/datalab-unal.jpg" alt="DataLab UNAL">
+                <img class="logo-fao" src="assets/logos/fao-ingles.png" alt="Food and Agriculture Organization of the United Nations">
+                <img class="logo-fao" src="assets/logos/fao-espanol.png" alt="Organización de las Naciones Unidas para la Alimentación y la Agricultura">
+            </div>
+            <p class="project-subtitle">Proyecto: Costo económico de reducir emisiones de metano en el sector lechero | Capítulo Colombia</p>
             <h2 id="welcome-title">Bienvenid@</h2>
             <p class="lead">
                 Gracias por participar en este proceso de validación técnica. Seleccione el modelo productivo
@@ -274,7 +328,7 @@
                 <a class="form-card" href="especializada-pequena.html">
                     <span class="card-content">
                         <span class="card-kicker">Modelo 1</span>
-                        <strong class="card-title">Producción Especializada de Leche Bovina (Pequeños Productores)</strong>
+                        <strong class="card-title">Producción de Leche en Sistemas Especializados de Pequeños Productores (LEPP)</strong>
                         <span class="card-description">Ingrese haciendo click</span>
                         <span class="card-action">Iniciar formulario <span class="arrow" aria-hidden="true">→</span></span>
                     </span>
@@ -283,7 +337,7 @@
                 <a class="form-card" href="especializada-grande.html">
                     <span class="card-content">
                         <span class="card-kicker">Modelo 2</span>
-                        <strong class="card-title">Producción Especializada de Leche Bovina (Grandes Productores)</strong>
+                        <strong class="card-title">Producción de Leche en Sistemas Especializados de Grandes Productores (LEGP)</strong>
                         <span class="card-description">Ingrese haciendo click</span>
                         <span class="card-action">Iniciar formulario <span class="arrow" aria-hidden="true">→</span></span>
                     </span>
@@ -292,7 +346,7 @@
                 <a class="form-card" href="doble-proposito-convencional.html">
                     <span class="card-content">
                         <span class="card-kicker">Modelo 3</span>
-                        <strong class="card-title">Producción Convencional de Leche Bovina (Doble Proposito)</strong>
+                        <strong class="card-title">Producción de Leche en Sistemas Doble Propósito Convencional (DPC)</strong>
                         <span class="card-description">Ingrese haciendo click</span>
                         <span class="card-action">Iniciar formulario <span class="arrow" aria-hidden="true">→</span></span>
                     </span>
@@ -301,7 +355,7 @@
                 <a class="form-card" href="doble-proposito-especializada.html">
                     <span class="card-content">
                         <span class="card-kicker">Modelo 4</span>
-                        <strong class="card-title">Producción Especializada de Leche Bovina (Doble Proposito)</strong>
+                        <strong class="card-title">Producción de Leche en Sistemas Doble Propósito Especializado (DPE)</strong>
                         <span class="card-description">Ingrese haciendo click</span>
                         <span class="card-action">Iniciar formulario <span class="arrow" aria-hidden="true">→</span></span>
                     </span>
